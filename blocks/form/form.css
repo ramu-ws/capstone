@@ -75,6 +75,22 @@
     box-sizing: border-box;
 }
 
+.field-header-container{
+color: #a600ff;
+background-color: #0f5132;
+}
+
+.field-header-text{
+    color: #842029;
+    justify-items: left;
+    padding-top: 15%;
+}
+
+.field-header-back-button{
+padding-top: 15%;
+}
+
+
 main .form pre {
     display: none;
 }
