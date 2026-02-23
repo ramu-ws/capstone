@@ -57,26 +57,34 @@ function maskMobileNumber(mobileNumber) {
 }
 
 
-
 /**
-* Masks the first 5 digits of the mobile number with *
-* @param {*} p
-* @param {*} n
-* @param {*} r
-* @returns {string} returns the mobile number with first 5 digits masked
-*/
+ * EMI calculation
+ * p  = principal (loan amount). Accepts strings like "7,50,000.00" or "750000.00"
+ * n  = tenure IN MONTHS (string or number)
+ * r  = annual rate of interest as a number (e.g., 11.5 for 11.5% p.a.)
+ *
+ * Returns EMI rounded to 2 decimals; returns 0 if inputs are invalid.
+ */
 function emicalculation(p, n, r) {
-  // Basic guards
-  if (p == null || n == null || r == null) return 0;
+  // helper: parse localized/labelled numbers safely
+  const parseNum = (val) => {
+    if (val == null) return NaN;
+    // Convert to string, remove anything that's not digit, dot, or minus.
+    // This strips commas, spaces, currency symbols, and trailing " %".
+    const cleaned = String(val).replace(/[^0-9.\-]/g, '');
+    // Edge: multiple dots from bad formats can still break; Number will handle to NaN.
+    return Number(cleaned);
+  };
 
-  const P = Number(p);
-  const N = Number(n);
-  const annualRatePercent = Number(r); // e.g., 10 => 10%
+  const P = parseNum(p);
+  const N = parseNum(n);
+  const annualRatePercent = parseNum(r);
 
+  // Validate
   if (!Number.isFinite(P) || !Number.isFinite(N) || !Number.isFinite(annualRatePercent)) return 0;
   if (P <= 0 || N <= 0) return 0;
 
-  // Convert annual % (e.g., 10) to monthly decimal (e.g., 0.10/12)
+  // Convert annual % to monthly decimal
   const monthlyRate = (annualRatePercent / 12) / 100;
 
   // Zero-interest case
@@ -90,7 +98,6 @@ function emicalculation(p, n, r) {
   const emi = (P * monthlyRate * pow) / denom;
   return Number(emi.toFixed(2));
 }
-
 
 // eslint-disable-next-line import/prefer-default-export
 export {
