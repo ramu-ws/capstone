@@ -66,7 +66,7 @@ function maskMobileNumber(mobileNumber) {
 
 function emicalculation(p,n,r){
   if (!p||!n||!r){
-    return '';
+    return "test";
   }
 
 }
