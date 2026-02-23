@@ -56,39 +56,23 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-
 /**
- * Calculate EMI (Equated Monthly Installment)
- * @param {number|string} p   - Principal (loan amount)
- * @param {number|string} n   - Tenure in months
- * @param {number|string} roi - Annual rate of interest in percent (e.g., 12 for 12%)
- * @returns {number} EMI rounded to 2 decimals. Returns 0 for invalid inputs.
- */
-function calcEmi(p, n, roi) {
-  if (p == null || n == null || roi == null) return 0;
+* Masks the first 5 digits of the mobile number with *
+* @param {*} p
+* @param {*} n
+* @param {*} r
+* @returns {string} returns the mobile number with first 5 digits masked
+*/
 
-  const P = Number(p);
-  const N = Number(n);
-  const annualRatePercent = Number(roi);
+function emicalculation(p,n,r){
+  if (!p||!n||!r){
+    return '';
+  }
 
-  if (!Number.isFinite(P) || !Number.isFinite(N) || !Number.isFinite(annualRatePercent)) return 0;
-  if (P <= 0 || N <= 0) return 0;
-
-  // Convert annual % to monthly decimal rate
-  const r = (annualRatePercent / 12) / 100;
-
-  // Zero-interest case
-  if (r === 0) return Number((P / N).toFixed(2));
-
-  const pow = Math.pow(1 + r, N);
-  const denom = pow - 1;
-  if (denom === 0) return 0;
-
-  const emi = (P * r * pow) / denom;
-  return Number(emi.toFixed(2));
 }
+
 
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber,calcEmi
+  getFullName, days, submitFormArrayToString, maskMobileNumber,emicalculation,
 };
