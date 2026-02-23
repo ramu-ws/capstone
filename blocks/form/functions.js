@@ -56,6 +56,8 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
+
+
 /**
 * Masks the first 5 digits of the mobile number with *
 * @param {*} p
@@ -63,12 +65,30 @@ function maskMobileNumber(mobileNumber) {
 * @param {*} r
 * @returns {string} returns the mobile number with first 5 digits masked
 */
+function emicalculation(p, n, r) {
+  // Basic guards
+  if (p == null || n == null || r == null) return 0;
 
-function emicalculation(p,n,r){
-  if (!p||!n||!r){
-    return "test";
-  }
+  const P = Number(p);
+  const N = Number(n);
+  const annualRatePercent = Number(r); // e.g., 10 => 10%
 
+  if (!Number.isFinite(P) || !Number.isFinite(N) || !Number.isFinite(annualRatePercent)) return 0;
+  if (P <= 0 || N <= 0) return 0;
+
+  // Convert annual % (e.g., 10) to monthly decimal (e.g., 0.10/12)
+  const monthlyRate = (annualRatePercent / 12) / 100;
+
+  // Zero-interest case
+  if (monthlyRate === 0) return Number((P / N).toFixed(2));
+
+  // EMI = P * r * (1+r)^n / ((1+r)^n - 1)
+  const pow = Math.pow(1 + monthlyRate, N);
+  const denom = pow - 1;
+  if (denom === 0) return 0;
+
+  const emi = (P * monthlyRate * pow) / denom;
+  return Number(emi.toFixed(2));
 }
 
 
