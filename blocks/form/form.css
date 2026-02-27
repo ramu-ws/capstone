@@ -77,17 +77,67 @@
 
 .field-header-container{
 color: #a600ff;
-background-color: #0f5132;
+background-color: #09107f;
+}
+
+.field-logo-image{
+    padding-top: 24px;
 }
 
 .field-header-text{
     color: #842029;
     justify-items: left;
-    padding-top: 15%;
+    padding-top: 9%;
 }
 
-.field-header-back-button{
-padding-top: 15%;
+.field-footertext{
+    justify-items: center;
+    background-color: #09107f;
+    color: #badbcc;
+}
+
+.field-view-button{
+    justify-content: center;
+    padding-top: 200%;
+    margin-top: 25%;
+}
+
+.field-xpress-loan-panel{
+    background-color: rgb(236, 236, 236);
+}
+
+.field-xpress-loan-amount{
+    animation: blinkText 2s step-start infinite;
+    background-color: rgb(249, 143, 68);
+    color: #ebebe4;
+}
+.field-xpress-tenure{
+    animation: blinkText 2s step-start infinite;
+    background-color: rgb(249, 143, 68);
+    color: #ebebe4;
+}
+.field-xpress-roi{
+    animation: blinkText 2s step-start infinite;
+    background-color: rgb(249, 143, 68);
+    color: #ebebe4;
+}
+.field-xpress-emi-amount{
+    animation: blinkText 2s step-start infinite;
+    background-color: rgb(249, 143, 68);
+    color: #ebebe4;
+}
+
+
+
+.field-xpress-checkbox{
+    align-items: start;
+}
+
+
+@keyframes blinkText {
+    50% {
+        opacity: 0;
+    }
 }
 
 
