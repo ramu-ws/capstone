@@ -81,13 +81,18 @@ background-color: #09107f;
 }
 
 .field-logo-image{
-    padding-top: 24px;
+    padding-top: 20px;
+}
+.field-trustlogo{
+    padding-top: 22px;
+    height: 40%;
+    width: 40%;
 }
 
 .field-header-text{
-    color: #842029;
+    color: #0f5132;
     justify-items: left;
-    padding-top: 9%;
+    padding-top: 5%;
 }
 
 .field-footertext{
@@ -96,32 +101,15 @@ background-color: #09107f;
     color: #badbcc;
 }
 
-/* .field-xpress-loan-panel{
-    background-color: rgb(236, 236, 236);
+.field-xpress-loan-panel{
+    background-color: bisque;
 }
 
-.field-xpress-loan-amount{
-    animation: blinkText 2s step-start infinite;
+.field-xpresspanelfields{
+     animation: blinkText 2s step-start infinite;
     background-color: rgb(249, 143, 68);
-    color: #ebebe4;
+    color: #e30e0e;
 }
-.field-xpress-tenure{
-    animation: blinkText 2s step-start infinite;
-    background-color: rgb(249, 143, 68);
-    color: #ebebe4;
-}
-.field-xpress-roi{
-    animation: blinkText 2s step-start infinite;
-    background-color: rgb(249, 143, 68);
-    color: #ebebe4;
-}
-.field-xpress-emi-amount{
-    animation: blinkText 2s step-start infinite;
-    background-color: rgb(249, 143, 68);
-    color: #ebebe4;
-} */
-
-
 
 .field-xpress-checkbox{
     align-items: start;
